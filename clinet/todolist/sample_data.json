@@ -1,0 +1,30 @@
+[
+  {
+    "id": "234234232r234234234",
+    "title": "Complete Backend Homework",
+    "description": "Implement CRUD operations for directory and task collections",
+    "completed": false,
+    "important": true,
+    "date": "2024-10-20",
+    "directory_id": "1"
+  },
+
+  {
+    "id": "234234232r234234236",
+    "title": "Complete fullstack Homework",
+    "description": "Connect frontend React components with backend API and handle async flows.",
+    "completed": true,
+    "important": true,
+    "date": "2024-10-23",
+    "directory_id": "1"
+  },
+  {
+    "id": "234234232r234234237",
+    "title": "Complete fulstack-2 Homework",
+    "description": "Refactor UI components, improve accessibility, and enhance responsive design.",
+    "completed": false,
+    "important": false,
+    "date": "2024-10-30",
+    "directory_id": "1"
+  }
+]
