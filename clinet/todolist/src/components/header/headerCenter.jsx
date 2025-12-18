@@ -47,7 +47,6 @@ export default function HeaderCenter(params) {
       case important_route:
         setRoutName(`Important tasks (${important} tasks)`);
         break;
-
       case main_route:
         setRoutName("Main");
         break;
