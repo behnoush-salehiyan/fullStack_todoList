@@ -21,6 +21,11 @@ const taskSchema = new Schema({
     ref: "Directory",
     required: true,
   },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 module.exports = model("Task", taskSchema);
