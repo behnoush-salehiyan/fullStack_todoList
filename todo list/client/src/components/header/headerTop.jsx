@@ -1,8 +1,24 @@
-import { InputGroup, Navbar, Col, Row, Button, Form } from "react-bootstrap";
-import Addnewtask from "../Addnewtask";
+import { useState } from "react";
+import {
+  InputGroup,
+  Navbar,
+  Col,
+  Row,
+  Button,
+  Form,
+  Dropdown,
+  Image,
+} from "react-bootstrap";
+
 import { CiSearch } from "react-icons/ci";
+import LogoutModal from "../modals/logout";
+import { useDispatch } from "react-redux";
+import { deleteUserToken } from "../../store/slice/user";
 
 export default function HeaderTop(params) {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const dispatch = useDispatch();
+
   const today = new Date();
 
   const formattedDate = `${today.getFullYear()}, ${today.toLocaleString(
@@ -35,10 +51,39 @@ export default function HeaderTop(params) {
       </div>
 
       <div
-        className="col-lg-4 col-md-3  ms-auto d-none d-md-block"
+        className="col-lg-4 col-md-3  ms-auto d-none d-md-block "
         style={{ width: "150px" }}
       >
-        <Addnewtask />
+        <div className="d-flex justify-content-center alifn-items-center ">
+          <Dropdown>
+            <Dropdown.Toggle
+              id="user-dropdown"
+              variant="transparent"
+              className="p-0"
+            >
+              <Image
+                src="https://picsum.photos/200/300"
+                width={45}
+                height={45}
+                roundedCircle
+              />
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item
+                onClick={() => {
+                  setShowLogoutModal(true);
+                }}
+              >
+                Logout
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <LogoutModal
+            show={showLogoutModal}
+            onHide={() => setShowLogoutModal(false)}
+          />
+        </div>
       </div>
     </Navbar>
   );

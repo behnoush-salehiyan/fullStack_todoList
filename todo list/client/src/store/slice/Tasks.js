@@ -1,26 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
-import tasks from "../../../sample_data.json";
+// import tasks from "../../../sample_data.json";
 import { v4 as uuid } from "uuid";
 import { deleteDirectory } from "./directory";
 
 const taskSlice = createSlice({
   name: "taskslist",
-  initialState: tasks,
+  initialState: [],
   reducers: {
+    setTasks: (state, action) => {
+      return action.payload;
+    },
+
     addTask: (state, action) => {
-      state.push({
-        ...action.payload,
-        id: uuid(),
-        createdAt: Date.now(),
-      });
+      state.push(action.payload);
     },
     deleteTask: (state, action) => {
       const { id } = action.payload;
-      return state.filter((t) => t.id !== id);
+      return state.filter((t) => (t._id || t.id) !== id);
     },
     editTask: (state, action) => {
       const { id } = action.payload;
-      const data = state.find((t) => t.id === id);
+      const data = state.find((t) => (t._id || t.id) === id);
+
       if (data) {
         data.title = action.payload.title;
         data.description = action.payload.description;
@@ -51,6 +52,6 @@ export const selectImportantCount = (store) =>
 export const selectCompletedCount = (store) =>
   store.taskslist.filter((t) => t.completed).length;
 
-export const { addTask, deleteTask, editTask } = taskSlice.actions;
+export const { addTask, deleteTask, editTask, setTasks } = taskSlice.actions;
 
 export default taskSlice.reducer;

@@ -15,35 +15,55 @@ import {
   secondary_route,
   main_route,
   important_route,
+  signup_route,
+  signin_route,
 } from "./pages/routname.js";
 import DynamicRoute from "./pages/DynamicRout.jsx";
+import SignUp from "./components/account/signUp.jsx";
+import SignIn from "./components/account/Signin.jsx";
+// import PrivateRoutes from "./components/PrivateRoutes.jsx";
+
+const DashboardLayout = () => (
+  <div className="row">
+    <div className="col-lg-3 col-1">
+      <SideBar />
+    </div>
+    <div className="col-lg-7 col-11">
+      <div className="me-3">
+        <Allheader />
+      </div>
+      <div>
+        <Outlet />
+      </div>
+    </div>
+  </div>
+);
 
 function App() {
   return (
     <>
-      <div className="row">
-        <div className="col-lg-3 col-1">
-          <SideBar />
-        </div>
+      <Routes>
+        {/* public pages*/}
+        <Route path={signup_route} element={<SignUp />} />
+        <Route path={signin_route} element={<SignIn />} />
 
-        <div className="col-lg-7 col-11">
-          <div className="me-3">
-            <Allheader />
-          </div>
-          <div>
-            <Routes>
-              <Route element={<Alltasks />} path={all_route} />
-              <Route element={<Completedtasks />} path={completed_route} />
-              <Route element={<Importanttasks />} path={important_route} />
-              <Route element={<Uncompletedtasks />} path={uncompleted_route} />
+        {/* private pages */}
+        {/* <Route element={<PrivateRoutes />}> */}
+        <Route element={<DashboardLayout />}>
+          <Route path={all_route} element={<Alltasks />} />
 
-              <Route element={<Main />} path={main_route} />
+          <Route path={completed_route} element={<Completedtasks />} />
 
-              <Route element={<DynamicRoute />} path="/:directory" />
-            </Routes>
-          </div>
-        </div>
-      </div>
+          <Route path={important_route} element={<Importanttasks />} />
+
+          <Route path={uncompleted_route} element={<Uncompletedtasks />} />
+
+          <Route path={main_route} element={<Main />} />
+
+          <Route path="/:directory" element={<DynamicRoute />} />
+        </Route>
+        {/* </Route> */}
+      </Routes>
     </>
   );
 }
