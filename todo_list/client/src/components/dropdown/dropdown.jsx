@@ -3,7 +3,7 @@ import DropDownItems from "./dropDownItems";
 
 import { useState } from "react";
 import NewDirectoryModal from "../modals/newDirectory";
-import { secondary_route, main_route } from "../../pages/routname.JS";
+import { secondary_route, main_route } from "../../pages/routname.js";
 
 import { useSelector } from "react-redux";
 //..........................................................................
