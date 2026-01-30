@@ -75,6 +75,8 @@ const deleteUser = async (req, res) => {
     res.status(500).end();
   }
 };
+
+
 const login = async (req, res) => {
   const { email, password } = req.body;
 

@@ -21,7 +21,7 @@ import {
 import DynamicRoute from "./pages/DynamicRout.jsx";
 import SignUp from "./components/account/signUp.jsx";
 import SignIn from "./components/account/Signin.jsx";
-// import PrivateRoutes from "./components/PrivateRoutes.jsx";
+import PrivateRoutes from "./components/PrivateRoutes.jsx";
 
 const DashboardLayout = () => (
   <div className="row">
@@ -48,21 +48,21 @@ function App() {
         <Route path={signin_route} element={<SignIn />} />
 
         {/* private pages */}
-        {/* <Route element={<PrivateRoutes />}> */}
-        <Route element={<DashboardLayout />}>
-          <Route path={all_route} element={<Alltasks />} />
+        <Route element={<PrivateRoutes />}>
+          <Route element={<DashboardLayout />}>
+            <Route path={all_route} element={<Alltasks />} />
 
-          <Route path={completed_route} element={<Completedtasks />} />
+            <Route path={completed_route} element={<Completedtasks />} />
 
-          <Route path={important_route} element={<Importanttasks />} />
+            <Route path={important_route} element={<Importanttasks />} />
 
-          <Route path={uncompleted_route} element={<Uncompletedtasks />} />
+            <Route path={uncompleted_route} element={<Uncompletedtasks />} />
 
-          <Route path={main_route} element={<Main />} />
+            <Route path={main_route} element={<Main />} />
 
-          <Route path="/:directory" element={<DynamicRoute />} />
+            <Route path="/:directory" element={<DynamicRoute />} />
+          </Route>
         </Route>
-        {/* </Route> */}
       </Routes>
     </>
   );

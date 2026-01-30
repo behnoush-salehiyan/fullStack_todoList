@@ -1,9 +1,21 @@
 import { Button } from "react-bootstrap";
+import { updateData } from "../lib/fetcher";
+
+import { useDispatch } from "react-redux";
 
 export default function ToggleButton({ completed, click }) {
+  const dispatch = useDispatch();
+
+  const handleToggle = async (task) => {
+    const updatedTask = await updateData(`${BASE_URL}/tasks/${task._id}`, {
+      completed: !task.completed,
+    });
+    dispatch(editTask(updatedTask));
+  };
+
   return (
     <Button
-      onClick={click}
+      onClick={handleToggle}
       className={
         "rounded-pill " +
         "border-0 " +
