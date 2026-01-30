@@ -9,7 +9,7 @@ import {
   important_route,
   completed_route,
   uncompleted_route,
-} from "../pages/routname.JS";
+} from "../pages/routname.js";
 
 const menueLink = [
   {
