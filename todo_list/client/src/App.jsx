@@ -1,5 +1,5 @@
 import Alltasks from "./pages/Alltasks";
-import Completedtasks from "./pages/Completedtasks.JSX";
+import Completedtasks from "./pages/Completedtasks.jsx";
 import Uncompletedtasks from "./pages/Uncompletedtasks";
 import Importanttasks from "./pages/Importanttasks";
 import Secondary from "./pages/secondary";
