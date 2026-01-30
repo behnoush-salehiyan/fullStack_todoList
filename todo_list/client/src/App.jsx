@@ -20,7 +20,7 @@ import {
 } from "./pages/routname.js";
 import DynamicRoute from "./pages/DynamicRout.jsx";
 import SignUp from "./components/account/signUp.jsx";
-import SignIn from "./components/account/Signin.jsx";
+import SignIn from "./components/account/SignIn.jsx";
 import PrivateRoutes from "./components/PrivateRoutes.jsx";
 
 const DashboardLayout = () => (
