@@ -6,12 +6,17 @@ const directoryRoutes = require("./routes/directory.route");
 const taskRoutes = require("./routes/tasks.route");
 const userRoutes = require("./routes/user.route");
 const logger = require("./middleware/logger");
+const cors = require("cors");
 
 dotenv.config();
 
-const app = express();
-app.use(logger, express.json());
-
+app.use(
+  logger,
+  express.json(),
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 app.use("/directories", directoryRoutes);
 app.use("/tasks", taskRoutes);
 app.use("/users", userRoutes);
